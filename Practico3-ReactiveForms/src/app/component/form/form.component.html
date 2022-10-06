@@ -28,8 +28,8 @@
                         [ngClass]="registroPostulante.get('edad')?.errors?.['required'] ? 'error' : ''">
                         El campo edad no puede quedar vacio</p>
                     <!-- [ngClass]="error ? 'error'" -->
-                    <p *ngIf="registroPostulante.get('edad')?.touched && registroPostulante.get('edad')?.errors?.['pattern']"
-                        [ngClass]="registroPostulante.get('edad')?.errors?.['pattern'] ? 'error' : ''">
+                    <p *ngIf="registroPostulante.get('edad')?.touched && registroPostulante.get('edad')?.errors?.['min']"
+                        [ngClass]="registroPostulante.get('edad')?.errors?.['min'] ? 'error' : ''">
                         La edad tiene que ser mayor o igual a 25</p>
                 </div>
                 <div class="col">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col">
                     <label for="">Titulo:</label>
-                    <select name="titulo" class="form-control" id="">
+                    <select name="titulo" class="form-control" id="" formControlName="titulo">
                         <option value="secundario">Secundario Completo</option>
                         <option value="terciario">Terciario Completo</option>
                         <option value="universitario">Universitario Completo</option>

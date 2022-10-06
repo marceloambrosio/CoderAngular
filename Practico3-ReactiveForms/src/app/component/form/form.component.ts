@@ -17,7 +17,7 @@ registroPostulante: FormGroup;
       apellido: new FormControl('', [Validators.required]),
       edad: new FormControl('', [Validators.min(25), Validators.required]),
       correo: new FormControl('', [Validators.pattern('^[a-z]+@[a-z]+\\.[a-z]{2,3}$'), Validators.required]),
-      //titulo: new FormControl('', [Validators.required]),
+      titulo: new FormControl('', [Validators.required]),
 
     })
    }

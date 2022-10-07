@@ -38,8 +38,8 @@
                     <p *ngIf="registroPostulante.get('correo')?.touched && registroPostulante.get('correo')?.errors?.['required']"
                         [ngClass]="registroPostulante.get('correo')?.errors?.['required'] ? 'error' : ''">
                         El campo correo no puede quedar vacio</p>
-                    <p *ngIf="registroPostulante.get('correo')?.touched && registroPostulante.get('correo')?.errors?.['pattern']"
-                        [ngClass]="registroPostulante.get('correo')?.errors?.['pattern'] ? 'error' : ''">
+                    <p *ngIf="registroPostulante.get('correo')?.touched && registroPostulante.get('correo')?.errors?.['email']"
+                        [ngClass]="registroPostulante.get('correo')?.errors?.['email'] ? 'error' : ''">
                         El formato del correo no es correcto</p>
                 </div>
                 <div class="col">

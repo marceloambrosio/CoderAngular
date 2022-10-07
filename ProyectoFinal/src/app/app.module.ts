@@ -7,12 +7,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
 import { SidenavComponent } from './component/sidenav/sidenav.component';
+import { ListaAlumnosComponent } from './component/lista-alumnos/lista-alumnos.component';
+import { FormAlumnoComponent } from './component/form-alumno/form-alumno.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    ListaAlumnosComponent,
+    FormAlumnoComponent
   ],
   imports: [
     BrowserModule,

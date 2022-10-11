@@ -6,24 +6,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module';
 import { ToolbarComponent } from './component/toolbar/toolbar.component';
-import { SidenavComponent } from './component/sidenav/sidenav.component';
 import { ListaAlumnosComponent } from './component/lista-alumnos/lista-alumnos.component';
 import { FormAlumnoComponent } from './component/form-alumno/form-alumno.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SidenavComponent,
     ListaAlumnosComponent,
-    FormAlumnoComponent
+    FormAlumnoComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule,
-    MaterialModule
+    MaterialModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

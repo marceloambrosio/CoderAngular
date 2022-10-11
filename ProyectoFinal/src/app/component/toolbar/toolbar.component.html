@@ -1,7 +1,16 @@
 <mat-toolbar color="primary">
     <mat-icon>menu</mat-icon>
-    <button mat-button>
+    <button mat-button (click)="opened=!opened">
         <mat-icon>menu</mat-icon>
     </button>
     <span>My App</span>
 </mat-toolbar>
+
+<mat-sidenav-container color="primary">
+    <mat-sidenav [(opened)]="opened">
+      <mat-list>
+        <mat-list-item><a routerLink="/lista" style="text-decoration: none;">Lista alumnos</a></mat-list-item>
+        <mat-list-item><a routerLink="/form" style="text-decoration: none;">Formulario alumnos</a></mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+  </mat-sidenav-container>

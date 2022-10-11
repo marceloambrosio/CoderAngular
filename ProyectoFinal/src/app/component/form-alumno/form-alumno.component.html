@@ -1,6 +1,6 @@
 <div class="container-lg px-4 my-4 card rounded-3 shadow-sm">
     <h1>Registro alumno</h1>
-    <form [formGroup='registroAlumno'] (ngSubmit)="agregarAlumno()">
+    <form [formGroup]='registroAlumno' (ngSubmit)="agregarAlumno()">
         <br>
         <div class="row">
             <div class="col">
@@ -30,14 +30,6 @@
                     <p *ngIf="registroAlumno.get('correo')?.touched && registroAlumno.get('correo')?.errors?.['email']"
                         [ngClass]="registroAlumno.get('correo')?.errors?.['email'] ? 'error' : ''">
                         El formato del correo no es correcto</p>
-                </div>
-                <div class="col">
-                    <label for="">Es profesional</label>
-                    <select name="titulo" class="form-control" id="" formControlName="titulo">
-                        <option value="secundario">Secundario Completo</option>
-                        <option value="terciario">Terciario Completo</option>
-                        <option value="universitario">Universitario Completo</option>
-                    </select>
                 </div>
             </div>
             <div class="row">

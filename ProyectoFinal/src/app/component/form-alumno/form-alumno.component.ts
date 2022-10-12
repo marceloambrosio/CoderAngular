@@ -17,7 +17,7 @@ registroAlumno: FormGroup;
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.email, Validators.required]),
-      esProfesional: new FormControl('', [Validators.required]),
+      titulo: new FormControl('', [Validators.required]),
    })
   }
   ngOnInit(): void {

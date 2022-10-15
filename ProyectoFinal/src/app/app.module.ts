@@ -11,6 +11,7 @@ import { FormAlumnoComponent } from './component/form-alumno/form-alumno.compone
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NombreApellidoPipe } from './pipes/nombre-apellido.pipe';
+import { SizeTituloDirective } from './directives/size-titulo.directive';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { NombreApellidoPipe } from './pipes/nombre-apellido.pipe';
     ListaAlumnosComponent,
     FormAlumnoComponent,
     NombreApellidoPipe,
+    SizeTituloDirective,
   ],
   imports: [
     BrowserModule,

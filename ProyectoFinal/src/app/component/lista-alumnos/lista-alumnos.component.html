@@ -1,5 +1,5 @@
-<br>
-<br>
+<div class="container-lg px-4 my-4 card rounded-3 shadow-sm">
+<h1><span appSizeTitulo>Lista de alumnos</span></h1>
 <table class="container-lg rounded-3 shadow-sm" mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="alumno">
         <th class="col-3" mat-header-cell *matHeaderCellDef>Alumno</th>
@@ -17,3 +17,5 @@
     <tr mat-header-row *matHeaderRowDef="columnas"></tr>
     <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
 </table>
+<br>
+</div>

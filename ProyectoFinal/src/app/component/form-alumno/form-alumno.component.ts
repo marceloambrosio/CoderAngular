@@ -39,9 +39,9 @@ registroAlumno: FormGroup;
   setAlumnoLocalStorage(nuevoAlumno: FormGroup){
     const nombre = JSON.stringify(nuevoAlumno.get('nombre')?.value)
     const apellido = JSON.stringify(nuevoAlumno.get('apellido')?.value)
-    const correo = JSON.stringify(nuevoAlumno.get('correo')?.value)
+    const mail = JSON.stringify(nuevoAlumno.get('correo')?.value)
     const titulo = JSON.stringify(nuevoAlumno.get('titulo')?.value)
-    const alumno = {nombre:nombre, apellido:apellido,correo:correo,titulo:titulo}
+    const alumno = {nombre:nombre, apellido:apellido,mail:mail,titulo:titulo}
 
     let datosExistentes = [];
     datosExistentes = JSON.parse(localStorage.getItem('alumno')||'{}');

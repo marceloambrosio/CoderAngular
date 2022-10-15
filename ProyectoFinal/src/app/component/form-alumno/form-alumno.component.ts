@@ -25,6 +25,7 @@ registroAlumno: FormGroup;
 
   agregarAlumno(){
     this.setAlumnoLocalStorage(this.registroAlumno)
+    alert(`¡El alumno se cargo correctamente!`)
     this.registroAlumno.reset()
     /* alumnoJson: {
       apellido: this.registroAlumno.get('apellido')?.value;

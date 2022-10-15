@@ -17,7 +17,7 @@ export class ListaAlumnosComponent implements OnInit {
     { nombre: 'Nahuel', apellido: 'Bruno', mail: 'nahuel@asd.com', titulo: "Universitario" },
     { nombre: 'Lorena', apellido: 'Fuentes', mail: 'lorena@asd.com', titulo: "Secundario" },
   ];
-  columnas: string[] = ['nombre', 'apellido', 'mail', 'titulo'];
+  columnas: string[] = ['alumno', 'mail', 'titulo'];
   dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.listaAlumnos);
 
   constructor() { }

@@ -10,6 +10,7 @@ import { ListaAlumnosComponent } from './component/lista-alumnos/lista-alumnos.c
 import { FormAlumnoComponent } from './component/form-alumno/form-alumno.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NombreApellidoPipe } from './pipes/nombre-apellido.pipe';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ToolbarComponent,
     ListaAlumnosComponent,
     FormAlumnoComponent,
+    NombreApellidoPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 export interface Alumno {
     nombre: string;
     apellido: string;
-    mail: string;
+    correo: string;
     titulo: string;
 }

@@ -23,10 +23,18 @@ registroAlumno: FormGroup;
   ngOnInit(): void {
   }
 
-  agregarAlumno(){
-    this.setAlumnoLocalStorage(this.registroAlumno)
-    alert(`¡El alumno se cargo correctamente!`)
-    this.registroAlumno.reset()
+  agregarAlumno(){ 
+    //localStorage.setItem('alumno', JSON.stringify(this.registroAlumno.value));
+    let datosExistentes = [];
+    datosExistentes = JSON.parse(localStorage.getItem('alumno')||'{}');
+    let datosJson = [];
+    datosJson = Array.from(datosExistentes)
+    datosJson.push(this.registroAlumno.value)
+    
+    localStorage.setItem('alumno', JSON.stringify(datosJson))
+    
+    alert(`¡El alumno se cargo correctamente!`);
+    this.registroAlumno.reset();
     /* alumnoJson: {
       apellido: this.registroAlumno.get('apellido')?.value;
       correo: this.registroAlumno.get('correo')?.value;
@@ -34,23 +42,5 @@ registroAlumno: FormGroup;
     } */
     //this.setAlumnoLocalStorage(this.registroAlumno)
     //    this.registroAlumno.reset()
-  }
-  
-  
-  setAlumnoLocalStorage(nuevoAlumno: FormGroup){
-    const nombre = JSON.stringify(nuevoAlumno.get('nombre')?.value)
-    const apellido = JSON.stringify(nuevoAlumno.get('apellido')?.value)
-    const mail = JSON.stringify(nuevoAlumno.get('correo')?.value)
-    const titulo = JSON.stringify(nuevoAlumno.get('titulo')?.value)
-    const alumno = {nombre:nombre, apellido:apellido,mail:mail,titulo:titulo}
-
-    let datosExistentes = [];
-    datosExistentes = JSON.parse(localStorage.getItem('alumno')||'{}');
-    let datosJson = [];
-    datosJson = Array.from(datosExistentes)
-    datosJson.push(alumno)
-
-    localStorage.setItem('alumno', JSON.stringify(datosJson))
-  }
-  
+  }  
 }

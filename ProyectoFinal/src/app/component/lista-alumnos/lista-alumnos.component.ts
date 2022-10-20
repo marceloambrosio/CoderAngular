@@ -1,6 +1,9 @@
+import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { filter, from } from 'rxjs';
 import { Alumno } from 'src/app/model/alumno';
+import { ListaAlumnosService } from 'src/app/service/lista-alumnos.service';
 
 @Component({
   selector: 'app-lista-alumnos',
@@ -24,6 +27,9 @@ export class ListaAlumnosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    from(this.listaAlumnos).pipe(
+      //filter((alumno: Alumno[]) => alumno.apellido === 'Lopez')
+    )
   }
 
 }

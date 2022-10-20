@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ListaAlumnosService } from 'src/app/service/lista-alumnos.service';
 
 @Component({
   selector: 'app-form-alumno',
@@ -8,39 +9,39 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 
 export class FormAlumnoComponent implements OnInit {
-registroAlumno: FormGroup;
+  registroAlumno: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private listaAlumno: ListaAlumnosService
+
   ) {
     this.registroAlumno = fb.group({
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.email, Validators.required]),
       titulo: new FormControl('', [Validators.required]),
-   });
+    });
   }
   ngOnInit(): void {
   }
 
-  agregarAlumno(){ 
-    //localStorage.setItem('alumno', JSON.stringify(this.registroAlumno.value));
-    let datosExistentes = [];
-    datosExistentes = JSON.parse(localStorage.getItem('alumno')||'{}');
-    let datosJson = [];
-    datosJson = Array.from(datosExistentes)
-    datosJson.push(this.registroAlumno.value)
-    
-    localStorage.setItem('alumno', JSON.stringify(datosJson))
-    
+  onSubmit() {
+    this.listaAlumno.agregarAlumno(this.registroAlumno.value);
     alert(`¡El alumno se cargo correctamente!`);
     this.registroAlumno.reset();
-    /* alumnoJson: {
-      apellido: this.registroAlumno.get('apellido')?.value;
-      correo: this.registroAlumno.get('correo')?.value;
-      titulo: this.registroAlumno.get('titulo')?.value;
-    } */
-    //this.setAlumnoLocalStorage(this.registroAlumno)
-    //    this.registroAlumno.reset()
-  }  
+  }
+
+  /*   agregarAlumno(){ 
+      let datosExistentes = [];
+      datosExistentes = JSON.parse(localStorage.getItem('alumno')||'{}');
+      let datosJson = [];
+      datosJson = Array.from(datosExistentes)
+      datosJson.push(this.registroAlumno.value)
+      
+      localStorage.setItem('alumno', JSON.stringify(datosJson))
+      
+      alert(`¡El alumno se cargo correctamente!`);
+      this.registroAlumno.reset();
+    }   */
 }

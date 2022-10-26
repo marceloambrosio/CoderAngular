@@ -12,13 +12,12 @@ export class ListaAlumnosService implements OnInit{
   
   
   constructor() {
-    this.ngOnInit();
+    this.alumnos = JSON.parse(localStorage.getItem('alumno') || '{}');
     this.alumnos$ = new BehaviorSubject(this.alumnos);
     this.alumnos$.next(this.alumnos);
   }
   
   ngOnInit(){
-    this.alumnos = JSON.parse(localStorage.getItem('alumno') || '{}');
   }
 
   agregarAlumno(nuevoAlumno: Alumno) {
@@ -28,7 +27,7 @@ export class ListaAlumnosService implements OnInit{
     datosJson = Array.from(datosExistentes)
     datosJson.push(nuevoAlumno)
     localStorage.setItem('alumno', JSON.stringify(datosJson))
-    this.ngOnInit()
+    this.alumnos = JSON.parse(localStorage.getItem('alumno') || '{}');
     this.alumnos$.next(this.alumnos);
   }
 

@@ -13,13 +13,10 @@ import { ListaAlumnosService } from 'src/app/service/lista-alumnos.service';
 })
 export class ListaAlumnosComponent implements OnInit, OnDestroy {
 
-  
-  arrayAlumnos!: Alumno[] | null;
+  arrayAlumnos!: Alumno[];
   alumnos$ = this.listaAlumnoService.getAlumnos()
   alumnosPromise = this.listaAlumnoService.getAlumnosPromise()
-  //listaAlumnos=JSON.parse(localStorage.getItem('alumno')||'{}');
   columnas: string[] = ['alumno', 'correo', 'titulo'];
-  //dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.arrayAlumnos);
 
   alumnosSubscription!: Subscription
 

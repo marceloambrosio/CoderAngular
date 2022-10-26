@@ -8,16 +8,17 @@ import { Alumno } from '../model/alumno';
 export class ListaAlumnosService implements OnInit{
 
   private alumnos!: Alumno[];
-  private alumnos$: Subject<Alumno[]> = new BehaviorSubject(this.alumnos);
-
-
+  private alumnos$ = new BehaviorSubject(this.alumnos);
+  
+  
   constructor() {
-    this.alumnos = JSON.parse(localStorage.getItem('alumno') || '{}');
-    this.alumnos$.next(this.alumnos);
+    this.ngOnInit();
     this.alumnos$ = new BehaviorSubject(this.alumnos);
+    this.alumnos$.next(this.alumnos);
   }
   
   ngOnInit(){
+    this.alumnos = JSON.parse(localStorage.getItem('alumno') || '{}');
   }
 
   agregarAlumno(nuevoAlumno: Alumno) {
@@ -27,10 +28,8 @@ export class ListaAlumnosService implements OnInit{
     datosJson = Array.from(datosExistentes)
     datosJson.push(nuevoAlumno)
     localStorage.setItem('alumno', JSON.stringify(datosJson))
+    this.ngOnInit()
     this.alumnos$.next(this.alumnos);
-
-    //alert(`¡El alumno se cargo correctamente!`);
-    //this.registroAlumno.reset();
   }
 
   getAlumnos(): Observable<Alumno[]> {

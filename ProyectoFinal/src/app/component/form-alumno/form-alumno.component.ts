@@ -13,7 +13,7 @@ export class FormAlumnoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private listaAlumno: ListaAlumnosService
+    private listaAlumnoService: ListaAlumnosService
 
   ) {
     this.registroAlumno = fb.group({
@@ -27,7 +27,7 @@ export class FormAlumnoComponent implements OnInit {
   }
 
   onSubmit() {
-    this.listaAlumno.agregarAlumno(this.registroAlumno.value);
+    this.listaAlumnoService.agregarAlumno(this.registroAlumno.value);
     alert(`¡El alumno se cargo correctamente!`);
     this.registroAlumno.reset();
   }

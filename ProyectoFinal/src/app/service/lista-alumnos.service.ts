@@ -1,25 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Alumno } from '../model/alumno';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ListaAlumnosService {
-  listaAlumnos = JSON.parse(localStorage.getItem('alumno') || '{}');
+export class ListaAlumnosService implements OnInit{
 
-  private alumnos: Alumno[] = [this.listaAlumnos];
-  private alumnos$: Subject<Alumno[]>;
+  private alumnos!: Alumno[];
+  private alumnos$: Subject<Alumno[]> = new BehaviorSubject(this.alumnos);
 
 
   constructor() {
-    //this.alumnos = [];
-    this.alumnos$ = new Subject();
+    this.alumnos = JSON.parse(localStorage.getItem('alumno') || '{}');
+    this.alumnos$.next(this.alumnos);
+    this.alumnos$ = new BehaviorSubject(this.alumnos);
+  }
+  
+  ngOnInit(){
   }
 
   agregarAlumno(nuevoAlumno: Alumno) {
     let datosExistentes = [];
-    datosExistentes = JSON.parse(localStorage.getItem('alumno')||'{}');
+    datosExistentes = JSON.parse(localStorage.getItem('alumno') || '{}');
     let datosJson = [];
     datosJson = Array.from(datosExistentes)
     datosJson.push(nuevoAlumno)
@@ -30,8 +33,21 @@ export class ListaAlumnosService {
     //this.registroAlumno.reset();
   }
 
-  getAlumnos$(): Observable<Alumno[]> {
+  getAlumnos(): Observable<Alumno[]> {
     return this.alumnos$.asObservable();
+  }
+
+  getAlumnosPromise(): Promise<Alumno[] | Alumno> {
+    return new Promise((resolve, reject) => {
+      if (this.alumnos.length >0) {
+        resolve(this.alumnos);
+      } else {
+        reject({
+          mensaje: "No hay alumnos cargados"
+        })
+      }
+    }
+    )
   }
 
 }

@@ -1,35 +1,41 @@
 import { DataSource } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { filter, from } from 'rxjs';
+import { filter, from, Subscription } from 'rxjs';
 import { Alumno } from 'src/app/model/alumno';
 import { ListaAlumnosService } from 'src/app/service/lista-alumnos.service';
+
 
 @Component({
   selector: 'app-lista-alumnos',
   templateUrl: './lista-alumnos.component.html',
   styleUrls: ['./lista-alumnos.component.css']
 })
-export class ListaAlumnosComponent implements OnInit {
+export class ListaAlumnosComponent implements OnInit, OnDestroy {
 
-  listaAlumnos=JSON.parse(localStorage.getItem('alumno')||'{}');
-/*   listaAlumnos: Array<Alumno> = [
-    { nombre: 'Esteban', apellido: 'Roganti', mail: 'esteban@asd.com',titulo: "Secundario" },
-    { nombre: 'Juan', apellido: 'Lopez', mail: 'juan@asd.com', titulo: "Terciario" },
-    { nombre: 'Jose', apellido: 'Gomez', mail: 'jose@asd.com', titulo: "Secundario" },
-    { nombre: 'Julio', apellido: 'Perez', mail: 'julio@asd.com', titulo: "Universitario" },
-    { nombre: 'Nahuel', apellido: 'Bruno', mail: 'nahuel@asd.com', titulo: "Universitario" },
-    { nombre: 'Lorena', apellido: 'Fuentes', mail: 'lorena@asd.com', titulo: "Secundario" },
-  ];
- */  columnas: string[] = ['alumno', 'correo', 'titulo'];
-  dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.listaAlumnos);
+  
+  arrayAlumnos!: Alumno[] | null;
+  alumnos$ = this.listaAlumnoService.getAlumnos()
+  alumnosPromise = this.listaAlumnoService.getAlumnosPromise()
+  //listaAlumnos=JSON.parse(localStorage.getItem('alumno')||'{}');
+  columnas: string[] = ['alumno', 'correo', 'titulo'];
+  //dataSource: MatTableDataSource<Alumno> = new MatTableDataSource<Alumno>(this.arrayAlumnos);
 
-  constructor() { }
+  alumnosSubscription!: Subscription
 
-  ngOnInit(): void {
-    from(this.listaAlumnos).pipe(
-      //filter((alumno: Alumno[]) => alumno.apellido === 'Lopez')
-    )
+  constructor(
+    private listaAlumnoService: ListaAlumnosService
+  ) { }
+
+  ngOnDestroy(): void {
+    this.alumnosSubscription.unsubscribe();
   }
 
+  ngOnInit(): void {
+    this.alumnosSubscription = this.alumnos$.subscribe({
+      next: alumnos => {
+        this.arrayAlumnos = alumnos
+      }
+    });
+  }
 }

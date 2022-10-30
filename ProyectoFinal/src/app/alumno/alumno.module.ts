@@ -17,6 +17,12 @@ import { SizeTituloDirective } from '../directives/size-titulo.directive';
   imports: [
     CommonModule,
     ShareModule,
+  ],
+  exports: [
+    FormAlumnoComponent,
+    ListaAlumnosComponent,
+    NombreApellidoPipe,
+    SizeTituloDirective
   ]
 })
 export class AlumnoModule { }

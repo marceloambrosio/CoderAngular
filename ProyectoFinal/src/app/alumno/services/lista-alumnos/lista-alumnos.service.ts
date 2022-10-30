@@ -35,7 +35,7 @@ export class ListaAlumnosService implements OnInit{
     return this.alumnos$.asObservable();
   }
 
-  getAlumnosPromise(): Promise<Alumno[] | Alumno> {
+  getAlumnosPromise(): Promise<Alumno[]> {
     return new Promise((resolve, reject) => {
       if (this.alumnos.length >0) {
         resolve(this.alumnos);

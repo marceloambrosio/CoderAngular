@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ListaAlumnosService } from 'src/app/service/lista-alumnos.service';
+import { ListaAlumnosService } from 'src/app/alumno/services/lista-alumnos/lista-alumnos.service';
 
 @Component({
   selector: 'app-form-alumno',
@@ -32,16 +32,4 @@ export class FormAlumnoComponent implements OnInit {
     this.registroAlumno.reset();
   }
 
-  /*   agregarAlumno(){ 
-      let datosExistentes = [];
-      datosExistentes = JSON.parse(localStorage.getItem('alumno')||'{}');
-      let datosJson = [];
-      datosJson = Array.from(datosExistentes)
-      datosJson.push(this.registroAlumno.value)
-      
-      localStorage.setItem('alumno', JSON.stringify(datosJson))
-      
-      alert(`¡El alumno se cargo correctamente!`);
-      this.registroAlumno.reset();
-    }   */
 }

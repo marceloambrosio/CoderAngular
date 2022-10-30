@@ -1,9 +1,8 @@
-import { DataSource } from '@angular/cdk/collections';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { filter, from, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/model/alumno';
-import { ListaAlumnosService } from 'src/app/service/lista-alumnos.service';
+import { ListaAlumnosService } from 'src/app/alumno/services/lista-alumnos/lista-alumnos.service';
 
 
 @Component({
@@ -16,7 +15,8 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
   arrayAlumnos!: Alumno[];
   alumnos$ = this.listaAlumnoService.getAlumnos()
   alumnosPromise = this.listaAlumnoService.getAlumnosPromise()
-  columnas: string[] = ['alumno', 'correo', 'titulo'];
+  columnas: string[] = ['alumno', 'correo', 'titulo', 'acciones'];
+  dataSource = new MatTableDataSource(this.arrayAlumnos)
 
   alumnosSubscription!: Subscription
 
@@ -35,4 +35,5 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
       }
     });
   }
+
 }

@@ -5,19 +5,19 @@ import { Alumno } from '../../model/alumno';
 @Injectable({
   providedIn: 'root'
 })
-export class ListaAlumnosService implements OnInit{
+export class ListaAlumnosService implements OnInit {
 
   private alumnos!: Alumno[];
   private alumnos$ = new BehaviorSubject(this.alumnos);
-  
-  
+
+
   constructor() {
     this.alumnos = JSON.parse(localStorage.getItem('alumno') || '{}');
     this.alumnos$ = new BehaviorSubject(this.alumnos);
     this.alumnos$.next(this.alumnos);
   }
-  
-  ngOnInit(){
+
+  ngOnInit() {
   }
 
   agregarAlumno(nuevoAlumno: Alumno) {
@@ -37,7 +37,7 @@ export class ListaAlumnosService implements OnInit{
 
   getAlumnosPromise(): Promise<Alumno[]> {
     return new Promise((resolve, reject) => {
-      if (this.alumnos.length >0) {
+      if (this.alumnos.length > 0) {
         resolve(this.alumnos);
       } else {
         reject({
@@ -48,25 +48,25 @@ export class ListaAlumnosService implements OnInit{
     )
   }
 
-  editarAlumno(alumno: Alumno){
+  editarAlumno(alumno: Alumno) {
     //Hay que agregar ID en el model de alumno y despues se cambia apellido por id
     let id = this.alumnos.findIndex((a: Alumno) => a.apellido === alumno.apellido);
-    if (id > -1){
+    if (id > -1) {
       this.alumnos[id] = alumno;
     }
 
     this.alumnos$.next(this.alumnos);
   }
-  elimnarAlumno(id: number){
-        //Hay que agregar ID en el model de alumno y despues se cambia apellido por id
+/*   elimnarAlumno(id: number) {
+    //Hay que agregar ID en el model de alumno y despues se cambia apellido por id
     let idAlumno = this.alumnos.findIndex((a: Alumno) => a.id === id);
-    if (id > -1){
-      this.alumnos.splice(idAlumno,1);
+    if (id > -1) {
+      this.alumnos.splice(idAlumno, 1);
     }
-    
+
     this.alumnos$.next(this.alumnos);
   }
-
+ */
 }
 
 

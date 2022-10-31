@@ -14,6 +14,11 @@ import { SizeTituloDirective } from '../directives/size-titulo.directive';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+  ],
+  exports: [
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class ShareModule { }

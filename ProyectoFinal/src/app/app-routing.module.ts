@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { FormAlumnoComponent } from './alumno/components/form-alumno/form-alumno.component';
-import { ListaAlumnosComponent } from './alumno/components/lista-alumnos/lista-alumnos.component';
+import { FormAlumnoComponent } from './form-alumno/components/form-alumno.component';
+import { ListaAlumnosComponent } from './lista-alumnos/components/lista-alumnos.component';
 
 const routes: Routes = [
   { path: 'form', component: FormAlumnoComponent },

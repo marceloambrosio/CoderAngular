@@ -13,11 +13,6 @@ import { BrowserModule } from '@angular/platform-browser';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-  ],
-  exports: [
-    MaterialModule,
-    ReactiveFormsModule,
-    FormsModule,
   ]
 })
 export class ShareModule { }

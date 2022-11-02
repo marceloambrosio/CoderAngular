@@ -49,24 +49,22 @@ export class ListaAlumnosService implements OnInit {
   }
 
   editarAlumno(alumno: Alumno) {
-    //Hay que agregar ID en el model de alumno y despues se cambia apellido por id
-    let id = this.alumnos.findIndex((a: Alumno) => a.apellido === alumno.apellido);
-    if (id > -1) {
-      this.alumnos[id] = alumno;
+    let legajo = this.alumnos.findIndex((a: Alumno) => a.legajo === alumno.legajo);
+    if (legajo > -1) {
+      this.alumnos[legajo] = alumno;
     }
 
     this.alumnos$.next(this.alumnos);
   }
-/*   elimnarAlumno(id: number) {
-    //Hay que agregar ID en el model de alumno y despues se cambia apellido por id
-    let idAlumno = this.alumnos.findIndex((a: Alumno) => a.id === id);
-    if (id > -1) {
-      this.alumnos.splice(idAlumno, 1);
+  elimnarAlumno(legajo: number) {
+    let legajoAlumno = this.alumnos.findIndex((a: Alumno) => a.legajo === legajo);
+    if (legajo > -1) {
+      this.alumnos.splice(legajoAlumno, 1);
     }
 
     this.alumnos$.next(this.alumnos);
   }
- */
+
 }
 
 

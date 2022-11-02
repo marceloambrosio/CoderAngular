@@ -17,6 +17,7 @@ export class FormAlumnoComponent implements OnInit {
 
   ) {
     this.registroAlumno = fb.group({
+      legajo: new FormControl('', [Validators.required]),
       nombre: new FormControl('', [Validators.required]),
       apellido: new FormControl('', [Validators.required]),
       correo: new FormControl('', [Validators.email, Validators.required]),

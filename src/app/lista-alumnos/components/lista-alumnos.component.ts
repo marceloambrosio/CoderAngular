@@ -15,7 +15,7 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
   arrayAlumnos!: Alumno[];
   alumnos$ = this.listaAlumnoService.getAlumnos()
   alumnosPromise = this.listaAlumnoService.getAlumnosPromise()
-  columnas: string[] = ['alumno', 'correo', 'titulo', 'acciones'];
+  columnas: string[] = ['legajo','alumno', 'correo', 'titulo', 'acciones'];
   dataSource = new MatTableDataSource(this.arrayAlumnos)
 
   alumnosSubscription!: Subscription

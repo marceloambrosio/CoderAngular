@@ -4,6 +4,13 @@
         <br>
         <div class="row">
             <div class="col">
+                <label for="">Legajo:</label>
+                <input type="number" class="form-control" formControlName="legajo">
+                <p *ngIf="registroAlumno.get('legajo')?.touched && registroAlumno.get('legajo')?.errors?.['required']"
+                    [ngClass]="registroAlumno.get('legajo')?.errors?.['required'] ? 'error' : ''">
+                    El campo legajo no puede quedar vacio</p>
+            </div>
+            <div class="col">
                 <label for="">Nombre:</label>
                 <input type="text" class="form-control" formControlName="nombre">
                 <p *ngIf="registroAlumno.get('nombre')?.touched && registroAlumno.get('nombre')?.errors?.['required']"

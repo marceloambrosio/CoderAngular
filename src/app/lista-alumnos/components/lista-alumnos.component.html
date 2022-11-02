@@ -2,6 +2,10 @@
     <h1><span appSizeTitulo>Lista de alumnos</span></h1>
 
     <table class="container-lg rounded-3 shadow-sm" mat-table [dataSource]="alumnos$">
+        <ng-container matColumnDef="legajo">
+            <th class="col-2" mat-header-cell *matHeaderCellDef>Legajo</th>
+            <td mat-cell *matCellDef="let alumno">{{alumno.legajo}}</td>
+        </ng-container>
         <ng-container matColumnDef="alumno">
             <th class="col-3" mat-header-cell *matHeaderCellDef>Alumno</th>
             <td mat-cell *matCellDef="let alumno">{{alumno | nombreApellido}}</td>

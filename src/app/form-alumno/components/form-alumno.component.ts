@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ListaAlumnosService } from 'src/app/lista-alumnos/services/lista-alumnos.service';
+import { ListaAlumnosService } from 'src/app/alumnos/services/lista-alumnos.service';
 
 @Component({
   selector: 'app-form-alumno',

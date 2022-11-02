@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/model/alumno';
-import { ListaAlumnosService } from 'src/app/lista-alumnos/services/lista-alumnos.service';
+import { ListaAlumnosService } from 'src/app/alumnos/services/lista-alumnos.service';
 
 
 @Component({
@@ -34,6 +34,10 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
         this.arrayAlumnos = alumnos
       }
     });
+  }
+
+  eliminarAlumno(legajo: number){
+    this.listaAlumnoService.elimnarAlumno(legajo);
   }
 
 }

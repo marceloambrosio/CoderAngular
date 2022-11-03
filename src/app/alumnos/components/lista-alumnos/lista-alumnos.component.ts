@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/model/alumno';
-import { ListaAlumnosService } from 'src/app/alumnos/services/lista-alumnos.service';
+import { AlumnosService } from 'src/app/alumnos/services/alumnos.service';
 import { Router } from '@angular/router';
 
 
@@ -14,15 +14,15 @@ import { Router } from '@angular/router';
 export class ListaAlumnosComponent implements OnInit, OnDestroy {
 
   arrayAlumnos!: Alumno[];
-  alumnos$ = this.listaAlumnoService.getAlumnos()
-  alumnosPromise = this.listaAlumnoService.getAlumnosPromise()
+  alumnos$ = this.AlumnoService.getAlumnos()
+  alumnosPromise = this.AlumnoService.getAlumnosPromise()
   columnas: string[] = ['legajo','alumno', 'correo', 'titulo', 'acciones'];
   dataSource = new MatTableDataSource(this.arrayAlumnos)
 
   alumnosSubscription!: Subscription
 
   constructor(
-    private listaAlumnoService: ListaAlumnosService,
+    private AlumnoService: AlumnosService,
     private router: Router,
   ) { }
 
@@ -39,7 +39,7 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
   }
 
   eliminarAlumno(legajo: number){
-    this.listaAlumnoService.eliminarAlumno(legajo);
+    this.AlumnoService.eliminarAlumno(legajo);
   }
 
   editarAlumno(alumno: Alumno){

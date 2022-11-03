@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Alumno } from 'src/app/pipes/nombre-apellido.pipe';
-import { ListaAlumnosService } from 'src/app/alumnos/services/lista-alumnos.service';
+import { AlumnosService } from 'src/app/alumnos/services/alumnos.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-editar-alumno',
@@ -11,22 +12,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditarAlumnoComponent implements OnInit {
   edicionAlumno!: FormGroup;
+  alumno$!: Observable<Alumno>;
 
   constructor(
-    private ListaAlumnoService: ListaAlumnosService,
+    private AlumnoService: AlumnosService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((parametros) => {
-      this.edicionAlumno = new FormGroup({
+      let legajo = parseInt(parametros.get('legajo') || '0');
+      this.alumno$ = this.AlumnoService.getAlumno(legajo);
+
+/*       this.edicionAlumno = new FormGroup({
         legajo: new FormControl(parametros.get('legajo'), [Validators.required]),
         nombre: new FormControl(parametros.get('nombre'), [Validators.required]),
         apellido: new FormControl(parametros.get('apellido'), [Validators.required]),
         correo: new FormControl(parametros.get('correo'), [Validators.required]),
         titulo: new FormControl(parametros.get('titulo'), [Validators.required]),
-      })
+      }) */
     })
   }
 

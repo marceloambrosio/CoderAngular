@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ListaAlumnosService } from 'src/app/alumnos/services/lista-alumnos.service';
+import { AlumnosService } from 'src/app/alumnos/services/alumnos.service';
 
 @Component({
   selector: 'app-form-alumno',
@@ -13,7 +13,7 @@ export class FormAlumnoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private listaAlumnoService: ListaAlumnosService
+    private AlumnoService: AlumnosService
 
   ) {
     this.registroAlumno = fb.group({
@@ -28,7 +28,7 @@ export class FormAlumnoComponent implements OnInit {
   }
 
   onSubmit() {
-    this.listaAlumnoService.agregarAlumno(this.registroAlumno.value);
+    this.AlumnoService.agregarAlumno(this.registroAlumno.value);
     alert(`¡El alumno se cargo correctamente!`);
     this.registroAlumno.reset();
   }

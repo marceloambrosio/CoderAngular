@@ -7,9 +7,7 @@ import { EditarAlumnoComponent } from './alumnos/components/editar-alumno/editar
 
 const routes: Routes = [
   { path: 'form', component: FormAlumnoComponent },
-  { path: 'lista', component: ListaAlumnosComponent, 
-  children:[{path: 'editar', component: EditarAlumnoComponent}]  
-}
+  { path: 'lista', children:[{path: 'editar', component: EditarAlumnoComponent}]}
 ];
 
 @NgModule({

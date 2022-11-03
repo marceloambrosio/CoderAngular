@@ -1,11 +1,11 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 import { Alumno } from '../../model/alumno';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ListaAlumnosService implements OnInit {
+export class AlumnosService implements OnInit {
 
   private alumnos!: Alumno[];
   private alumnos$ = new BehaviorSubject(this.alumnos);
@@ -33,6 +33,12 @@ export class ListaAlumnosService implements OnInit {
 
   getAlumnos(): Observable<Alumno[]> {
     return this.alumnos$.asObservable();
+  }
+
+  getAlumno(legajo: number){
+    return this.getAlumnos().pipe(
+      map((alumnos: Alumno[]) => alumnos.filter((alumno: Alumno) => alumno.legajo === legajo)[0])
+    )
   }
 
   getAlumnosPromise(): Promise<Alumno[]> {

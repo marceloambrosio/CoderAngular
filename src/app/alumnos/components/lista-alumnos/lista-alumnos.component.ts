@@ -43,13 +43,14 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
   }
 
   editarAlumno(alumno: Alumno){
-    this.router.navigate(['lista/editar', {
+    this.router.navigate(['lista/editar', {alumno}
+    /* {
       legajo: alumno.legajo,
       nombre: alumno.nombre,
       apellido: alumno.apellido,
       correo: alumno.correo,
       titulo: alumno.titulo,
-    }
+    } */
   ])
   }
 

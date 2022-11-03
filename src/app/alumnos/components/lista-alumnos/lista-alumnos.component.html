@@ -21,10 +21,10 @@
         <ng-container matColumnDef="acciones">
             <th class="col-2" mat-header-cell *matHeaderCellDef>Acciones</th>
             <td mat-cell *matCellDef="let alumno">
-                <a class="pointer" matTooltip="Editar">
+                <a class="pointer" matTooltip="Editar" (click)="editarAlumno(alumno.legajo)">
                     <mat-icon>edit</mat-icon>
                 </a>
-                <a class="pointer" matTooltip="Eliminar" (click)="eliminarAlumno(alumno.legajo)">
+                <a class="pointer" matTooltip="Eliminar" (click)="eliminarAlumno(alumno)">
                     <mat-icon>delete</mat-icon>
                 </a>
             </td>

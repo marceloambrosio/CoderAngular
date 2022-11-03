@@ -1,1 +1,63 @@
-<p>editar-alumno works!</p>
+<div class="container-lg px-4 my-4 card rounded-3 shadow-sm">
+    <h1><span appSizeTitulo>Edicion de alumno</span></h1>
+    <form [formGroup]='edicionAlumno' ngSubmit)="editarAlumno()">
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="">Legajo:</label>
+                <input type="number" class="form-control" formControlName="legajo">
+                <p *ngIf="edicionAlumno.get('legajo')?.touched && edicionAlumno.get('legajo')?.errors?.['required']"
+                    [ngClass]="edicionAlumno.get('legajo')?.errors?.['required'] ? 'error' : ''">
+                    El campo legajo no puede quedar vacio</p>
+            </div>
+            <div class="col">
+                <label for="">Nombre:</label>
+                <input type="text" class="form-control" formControlName="nombre">
+                <p *ngIf="edicionAlumno.get('nombre')?.touched && edicionAlumno.get('nombre')?.errors?.['required']"
+                    [ngClass]="edicionAlumno.get('nombre')?.errors?.['required'] ? 'error' : ''">
+                    El campo nombre no puede quedar vacio</p>
+            </div>
+            <div class="col">
+                <label for="">Apellido:</label>
+                <input type="text" class="form-control" formControlName="apellido">
+                <p *ngIf="edicionAlumno.get('apellido')?.touched && edicionAlumno.get('apellido')?.errors?.['required']"
+                    [ngClass]="edicionAlumno.get('apellido')?.errors?.['required'] ? 'error' : ''">
+                    El campo apellido no puede quedar vacio</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-8">
+                    <label for="">Correo:</label>
+                    <input type="text" class="form-control" formControlName="correo">
+                    <p *ngIf="edicionAlumno.get('correo')?.touched && edicionAlumno.get('correo')?.errors?.['required']"
+                        [ngClass]="edicionAlumno.get('correo')?.errors?.['required'] ? 'error' : ''">
+                        El campo correo no puede quedar vacio</p>
+                    <p *ngIf="edicionAlumno.get('correo')?.touched && edicionAlumno.get('correo')?.errors?.['email']"
+                        [ngClass]="edicionAlumno.get('correo')?.errors?.['email'] ? 'error' : ''">
+                        El formato del correo no es correcto</p>
+                </div>
+                <div class="col-4">
+                    <label for="">Titulo:</label>
+                    <select name="titulo" class="form-control" id="" formControlName="titulo">
+                        <option value="Secundario">Secundario Completo</option>
+                        <option value="Terciario">Terciario Completo</option>
+                        <option value="Universitario">Universitario Completo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for=""></label>
+                    <br>
+                    <button type="submit" class="btn btn-primary float-end"
+                        [disabled]="edicionAlumno.invalid">Guardar</button>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+    </form>
+</div>

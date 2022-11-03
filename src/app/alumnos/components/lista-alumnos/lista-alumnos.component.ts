@@ -3,6 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { Alumno } from 'src/app/model/alumno';
 import { ListaAlumnosService } from 'src/app/alumnos/services/lista-alumnos.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
   alumnosSubscription!: Subscription
 
   constructor(
-    private listaAlumnoService: ListaAlumnosService
+    private listaAlumnoService: ListaAlumnosService,
+    private router: Router,
   ) { }
 
   ngOnDestroy(): void {
@@ -37,7 +39,18 @@ export class ListaAlumnosComponent implements OnInit, OnDestroy {
   }
 
   eliminarAlumno(legajo: number){
-    this.listaAlumnoService.elimnarAlumno(legajo);
+    this.listaAlumnoService.eliminarAlumno(legajo);
+  }
+
+  editarAlumno(alumno: Alumno){
+    this.router.navigate(['lista/editar', {
+      legajo: alumno.legajo,
+      nombre: alumno.nombre,
+      apellido: alumno.apellido,
+      correo: alumno.correo,
+      titulo: alumno.titulo,
+    }
+  ])
   }
 
 }

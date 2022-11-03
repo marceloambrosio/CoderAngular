@@ -56,12 +56,12 @@ export class ListaAlumnosService implements OnInit {
 
     this.alumnos$.next(this.alumnos);
   }
-  elimnarAlumno(legajo: number) {
+
+  eliminarAlumno(legajo: number) {
     let legajoAlumno = this.alumnos.findIndex((a: Alumno) => a.legajo === legajo);
     if (legajo > -1) {
       this.alumnos.splice(legajoAlumno, 1);
     }
-
     this.alumnos$.next(this.alumnos);
   }
 

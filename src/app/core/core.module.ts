@@ -4,12 +4,14 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MaterialModule } from '../material.module';
 import { Router } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 
 
 @NgModule({
   declarations: [
     ToolbarComponent,
+    InicioComponent,
   ],
   imports: [
     CommonModule,

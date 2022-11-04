@@ -7,12 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { ShareModule } from './share/share.module';
 import { EditarAlumnoComponent } from './alumnos/components/editar-alumno/editar-alumno.component';
+import { ToolbarComponent } from './core/components/toolbar/toolbar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditarAlumnoComponent,
   ],
   imports: [
     BrowserModule,

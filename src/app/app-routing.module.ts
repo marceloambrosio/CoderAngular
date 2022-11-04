@@ -7,7 +7,9 @@ import { EditarAlumnoComponent } from './alumnos/components/editar-alumno/editar
 
 const routes: Routes = [
   { path: 'form', component: FormAlumnoComponent },
-  { path: 'lista', component: ListaAlumnosComponent ,children:[{path: 'editar', component: EditarAlumnoComponent}]}
+  //{ path: 'lista', component: ListaAlumnosComponent ,children:[{path: 'editar', component: EditarAlumnoComponent}]}
+  { path: 'alumnos', loadChildren: () => import('./alumnos/alumnos.module').then((m) => m.AlumnosModule) }
+
 ];
 
 @NgModule({
@@ -17,7 +19,7 @@ const routes: Routes = [
 
 
 export class AppRoutingModule {
-  
- }
+
+}
 
 

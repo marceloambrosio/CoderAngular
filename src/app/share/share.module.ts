@@ -7,11 +7,11 @@ import { ListaAlumnosComponent } from '../alumnos/components/lista-alumnos/lista
 import { FormAlumnoComponent } from '../form-alumno/components/form-alumno.component';
 import { NombreApellidoPipe } from '../pipes/nombre-apellido.pipe';
 import { SizeTituloDirective } from '../directives/size-titulo.directive';
+import { AlumnosModule } from '../alumnos/alumnos.module';
 
 
 @NgModule({
   declarations: [
-    ListaAlumnosComponent,
     FormAlumnoComponent,
     NombreApellidoPipe,
     SizeTituloDirective
